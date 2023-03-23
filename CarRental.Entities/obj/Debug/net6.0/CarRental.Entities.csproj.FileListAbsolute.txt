@@ -1,0 +1,15 @@
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\bin\Debug\net6.0\CarRental.Entities.deps.json
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\bin\Debug\net6.0\CarRental.Entities.dll
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\bin\Debug\net6.0\CarRental.Entities.pdb
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\bin\Debug\net6.0\Core.dll
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\bin\Debug\net6.0\Core.pdb
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.csproj.AssemblyReference.cache
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.AssemblyInfoInputs.cache
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.AssemblyInfo.cs
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.csproj.CoreCompileInputs.cache
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.csproj.CopyComplete
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.dll
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\refint\CarRental.Entities.dll
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\CarRental.Entities.pdb
+C:\Users\np_ba\source\repos\ReCapProject\CarRental.Entities\obj\Debug\net6.0\ref\CarRental.Entities.dll
