@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Core.Entities.Concrete
@@ -13,7 +13,7 @@ namespace Core.Entities.Concrete
         public int StatusCode { get; set; }
         public override string ToString()
         {
-            return JsonSerializer.Serialize(this);
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

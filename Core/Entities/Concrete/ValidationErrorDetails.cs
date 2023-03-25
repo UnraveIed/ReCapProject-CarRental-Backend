@@ -2,7 +2,7 @@
 
 namespace Core.Entities.Concrete
 {
-    public class ValidationErrorDetails: ErrorDetails
+    public class ValidationErrorDetails : ErrorDetails
     {
         public IEnumerable<ValidationFailure> ValidationErrors { get; set; }
     }
