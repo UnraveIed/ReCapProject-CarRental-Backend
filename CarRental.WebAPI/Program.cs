@@ -97,7 +97,8 @@ app.UseStaticFiles();
 app.UseCors(options =>
 {
     options.WithOrigins("http://localhost:4201")
-    .AllowAnyHeader();
+    .AllowAnyHeader()
+    .AllowAnyMethod();
 });
 
 app.UseAuthentication();

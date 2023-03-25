@@ -14,15 +14,15 @@ namespace CarRental.Business.ValidationRules.FluentValidation
         {
             RuleFor(x => x.ModelYear)
                 .NotEmpty()
-                .LessThanOrEqualTo((short)DateTime.Now.Year);
+                .LessThanOrEqualTo((short)DateTime.Now.Year).WithMessage("Lutfen gecerli bir yil veriniz!");
 
             RuleFor(x => x.ColorId)
                 .NotEmpty()
-                .GreaterThanOrEqualTo(1);
+                .GreaterThanOrEqualTo(1).WithMessage("Renk degeri 0'dan buyuk olmalidir!");
 
             RuleFor(x => x.DailyPrice)
                 .NotEmpty()
-                .GreaterThan(0);
+                .GreaterThan(0).WithMessage("Fiyat 0 olamaz!");
         }
     }
 }

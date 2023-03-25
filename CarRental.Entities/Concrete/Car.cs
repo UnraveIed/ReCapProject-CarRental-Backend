@@ -21,7 +21,7 @@ namespace CarRental.Entities.Concrete
         public virtual ICollection<Rental>? Rentals { get; set; }
 
         // CarImages N
-        public virtual ICollection<CarImage> CarImages { get; set; }
+        public virtual ICollection<CarImage>? CarImages { get; set; }
 
         public short ModelYear { get; set; }
         public decimal DailyPrice { get; set; }
