@@ -26,7 +26,7 @@ namespace CarRental.Business.Concrete
             _brandRepository = brandRepository;
         }
 
-        //[SecuredOperationAspect("admin")]
+        [SecuredOperationAspect("admin")]
         [ValidationAspect(typeof(BrandValidator))]
         public async Task<IDataResult<Brand>> AddAsync(Brand entity)
         {

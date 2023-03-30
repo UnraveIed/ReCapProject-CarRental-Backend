@@ -17,7 +17,7 @@ namespace CarRental.Business.Abstract
         Task<IDataResult<User>> AddAsync(User user);
         Task<IDataResult<User>> GetByMailAsync(string email);
         Task<IDataResult<IList<User>>> GetAllAsync();
-        Task<IDataResult<User>> UpdateAsync(User entity);
+        Task<IDataResult<User>> UpdateAsync(UserForUpdateDto entity);
         Task<IResult> HardDeleteAsync(User entity);
         Task<IDataResult<User>> GetByIdAsync(int userId);
     }

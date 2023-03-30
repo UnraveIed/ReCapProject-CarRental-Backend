@@ -4,6 +4,7 @@ using CarRental.Business.Constants;
 using CarRental.Business.ValidationRules.FluentValidation;
 using CarRental.DataAccess.Abstract;
 using CarRental.DataAccess.Concrete;
+using CarRental.Entities.Dtos;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Abstract;
 using Core.Entities.Concrete;
@@ -82,15 +83,19 @@ namespace CarRental.Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
-        public async Task<IDataResult<User>> UpdateAsync(User entity)
+        public async Task<IDataResult<User>> UpdateAsync(UserForUpdateDto entity)
         {
             var results = BusinessRules.Run(await IsUserExists(entity.Id));
             if (results != null)
             {
                 return new ErrorDataResult<User>(Messages.UsersNotFound);
             }
-            var updatedUser = await _userRepository.UpdateAsync(entity);
-            return new SuccessDataResult<User>(updatedUser);
+            var user = await _userRepository.GetAsync(x => x.Id == entity.Id);
+            user.FirstName = entity.FirstName;
+            user.LastName = entity.LastName;
+            user.Email = entity.Email;
+            await _userRepository.UpdateAsync(user);
+            return new SuccessDataResult<User>(user, "Basariyla guncellendi!");
         }
 
         private async Task<IResult> IsUserExists(int userId)
