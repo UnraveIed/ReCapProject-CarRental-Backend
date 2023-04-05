@@ -38,5 +38,16 @@ namespace CarRental.WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpPut("changepassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordDto changePassword)
+        {
+            var result = await _userService.ChangePasswordAsync(changePassword);
+            if(result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

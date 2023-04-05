@@ -11,6 +11,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
+using Core.Utilities.Security.Hashing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,24 @@ namespace CarRental.Business.Concrete
             return new ErrorDataResult<User>();
         }
 
+        [ValidationAspect(typeof(PasswordValidator))]
+        public async Task<IResult> ChangePasswordAsync(ChangePasswordDto changePasswordDto)
+        {
+            var result = BusinessRules.Run(IsUserExists(changePasswordDto.UserId).Result,
+                CheckIfPasswordCorrect(changePasswordDto.UserId, changePasswordDto.CurrentPassword).Result);
+            if (result == null)
+            {
+                var user = await _userRepository.GetAsync(x => x.Id == changePasswordDto.UserId);
+                byte[] passwordHash, passwordSalt;
+                HashingHelper.CreatePasswordHash(changePasswordDto.NewPassword, out passwordHash, out passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+                var updatedUser = await _userRepository.UpdateAsync(user);
+                return new SuccessResult("Sifre Basariyla Guncellendi!");
+            }
+            return result;
+        }
+
         public async Task<IDataResult<IList<User>>> GetAllAsync()
         {
             var users = await _userRepository.GetAllAsync();
@@ -55,7 +74,7 @@ namespace CarRental.Business.Concrete
             var user = await _userRepository.GetAsync(x => x.Id == userId);
             if (user != null)
             {
-                return new SuccessDataResult<User>(user); 
+                return new SuccessDataResult<User>(user);
             }
             return new ErrorDataResult<User>(Messages.UsersNotFound);
         }
@@ -105,7 +124,20 @@ namespace CarRental.Business.Concrete
             {
                 return new SuccessResult();
             }
-            return new ErrorResult();
+            return new ErrorResult("Kullanici Bulunamadi");
+        }
+
+        private async Task<IResult> CheckIfPasswordCorrect(int userId, string password)
+        {
+            var user = await _userRepository.GetAsync(x => x.Id == userId);
+
+            var result = HashingHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt);
+            if (result)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult("Sifre Yanlis!");
+
         }
 
 

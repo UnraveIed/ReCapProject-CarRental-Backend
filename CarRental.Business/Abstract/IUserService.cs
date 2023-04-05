@@ -20,5 +20,6 @@ namespace CarRental.Business.Abstract
         Task<IDataResult<User>> UpdateAsync(UserForUpdateDto entity);
         Task<IResult> HardDeleteAsync(User entity);
         Task<IDataResult<User>> GetByIdAsync(int userId);
+        Task<IResult> ChangePasswordAsync(ChangePasswordDto changePasswordDto);
     }
 }
