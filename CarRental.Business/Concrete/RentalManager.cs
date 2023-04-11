@@ -6,6 +6,8 @@ using CarRental.DataAccess.Concrete;
 using CarRental.Entities.Concrete;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Core.Aspects.Autofac.Validation;
+using Core.Entities.Abstract;
+using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using System;
@@ -22,20 +24,31 @@ namespace CarRental.Business.Concrete
     {
         private readonly IRentalRepository _rentalRepository;
         private readonly IPaymentService _paymentService;
+        private readonly ICustomerService _customerService;
+        private readonly ICarService _carService;
 
-        public RentalManager(IRentalRepository rentalRepository, IPaymentService paymentService)
+        public RentalManager(IRentalRepository rentalRepository, IPaymentService paymentService, ICustomerService customerService, ICarService carService)
         {
             _rentalRepository = rentalRepository;
             _paymentService = paymentService;
+            _customerService = customerService;
+            _carService = carService;
         }
 
         [ValidationAspect(typeof(RentalValidator))]
         public async Task<IDataResult<Rental>> AddAsync(Rental entity)
         {
-            var carStatus = await _rentalRepository.AnyAsync(x => x.CarId == entity.CarId && x.ReturnDate == null && entity.IsActive == true);
-            if (carStatus)
+            //var carStatus = await _rentalRepository.AnyAsync(x => x.CarId == entity.CarId && x.ReturnDate == null && entity.IsActive == true);
+            //if (carStatus)
+            //{
+            //    return new ErrorDataResult<Rental>("Araç aktif kirada.");
+            //}
+            var result = BusinessRules.Run(CheckIsCarExist(entity.CarId).Result,
+                CheckCarInActiveRent(entity.CarId).Result,
+                CheckFindexPoints(entity.CarId, entity.CustomerId).Result);
+            if(result != null)
             {
-                return new ErrorDataResult<Rental>("Araç aktif kirada.");
+                return new ErrorDataResult<Rental>(result.Message);
             }
             _paymentService.RentCarPay();
             // Odeme islemi kabul olmamis istek
@@ -114,6 +127,38 @@ namespace CarRental.Business.Concrete
                 return new SuccessDataResult<Rental>(updateResult.Data, "Odeme islemi basarili!");
             }
             return new ErrorDataResult<Rental>("Kod uyusmamaktadir!");
+        }
+
+        private async Task<IResult> CheckFindexPoints(int carId, int customerId)
+        {
+            var customer = await _customerService.GetByIdAsync(customerId);
+            var car = await _carService.GetByIdAsync(carId);
+            
+            if(customer.Data.FindexPoint >= car.Data.MinFindexPoint)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult("Musteri findeks puani yeterli degil!");
+        }
+
+        private async Task<IResult> CheckCarInActiveRent(int carId)
+        {
+            var carStatus = await _rentalRepository.AnyAsync(x => x.CarId == carId && x.ReturnDate == null && x.IsActive == true);
+            if (carStatus)
+            {
+                return new ErrorResult("Araç aktif kirada.");
+            }
+            return new SuccessResult();
+        }
+
+        private async Task<IResult> CheckIsCarExist(int carId)
+        {
+            var result = await _carService.GetByIdAsync(carId);
+            if(result.IsSuccess)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult("Arac bulunamadi!");
         }
 
         #region UnitOfWork

@@ -18,6 +18,8 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.Property(x => x.CompanyName).HasMaxLength(50);
+            builder.Property(a => a.FindexPoint).IsRequired();
+
 
             builder.Property(b => b.CreatedByName).IsRequired();
             builder.Property(b => b.CreatedByName).HasMaxLength(50);
@@ -28,6 +30,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(b => b.IsActive).IsRequired();
             builder.Property(b => b.IsDeleted).IsRequired();
             builder.Property(a => a.Note).HasMaxLength(500);
+
 
             builder.HasOne<User>(x => x.User);
 
@@ -44,6 +47,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "1. Musteri",
+                        FindexPoint = 1750
                     },
                     new Customer
                     {
@@ -57,6 +61,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "2. Musteri",
+                        FindexPoint = 1000
                     }
                 );
         }

@@ -17,6 +17,12 @@ namespace CarRental.Business.ValidationRules.FluentValidation
             RuleFor(x => x.CompanyName)
                 .NotEmpty()
                 .MinimumLength(2);
+
+            RuleFor(x => x.FindexPoint)
+                .NotEmpty()
+                .GreaterThan(0)
+                .LessThanOrEqualTo(1900)
+                .WithMessage("Findeks puani 0 ile 1900 arasinda olmalidir!");
         }
     }
 }

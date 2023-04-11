@@ -23,6 +23,8 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(c=>c.Description).IsRequired();
             builder.Property(c => c.Description).HasColumnType("NVARCHAR(MAX)");
 
+            builder.Property(c => c.MinFindexPoint).IsRequired();
+
             builder.Property(b => b.CreatedByName).IsRequired();
             builder.Property(b => b.CreatedByName).HasMaxLength(50);
             builder.Property(b => b.ModifiedByName).IsRequired();
@@ -52,6 +54,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "1. Araba",
+                        MinFindexPoint = 1500
                     },
                     new Car
                     {
@@ -68,6 +71,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "2. Araba",
+                        MinFindexPoint = 1600
                     },
                     new Car
                     {
@@ -84,6 +88,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "3. Araba",
+                        MinFindexPoint = 1750
                     },
                     new Car
                     {
@@ -100,6 +105,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "4. Araba",
+                        MinFindexPoint = 1200
                     },
                     new Car
                     {
@@ -116,6 +122,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "5. Araba",
+                        MinFindexPoint = 1100
                     },
                     new Car
                     {
@@ -132,6 +139,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Mappings
                         ModifiedByName = "InitialCreate",
                         ModifiedDate = DateTime.Now,
                         Note = "6. Araba",
+                        MinFindexPoint = 1150
                     }
                 );
         }

@@ -23,6 +23,12 @@ namespace CarRental.Business.ValidationRules.FluentValidation
             RuleFor(x => x.DailyPrice)
                 .NotEmpty()
                 .GreaterThan(0).WithMessage("Fiyat 0 olamaz!");
+
+            RuleFor(x => x.MinFindexPoint)
+                .NotEmpty()
+                .GreaterThan(0)
+                .LessThanOrEqualTo(1900)
+                .WithMessage("Findeks puani 0 ile 1900 arasinda olmalidir!");
         }
     }
 }
