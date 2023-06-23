@@ -65,14 +65,14 @@ namespace CarRental.Business.Concrete
 
         public async Task<IDataResult<Car>> GetCarDetailAsync(int carId)
         {
-            List<Expression<Func<Car, bool>>> predicates = new();
+            //List<Expression<Func<Car, bool>>> predicates = new();
             List<Expression<Func<Car, object>>> includes = new();
-            predicates.Add(x => x.Id == carId);
+            //predicates.AddAsync(x => x.Id == carId);
             includes.Add(x => x.Brand);
-            //includes.Add(x => x.CarImages);
+            //includes.AddAsync(x => x.CarImages);
             includes.Add(x => x.Rentals);
             includes.Add(x => x.Color);
-            var carDetails = await _carRepository.GetAsync(predicates, includes);
+            var carDetails = await _carRepository.GetAsync(x=> x.Id == carId, includes);
             return new SuccessDataResult<Car>(carDetails);
         }
 
@@ -156,7 +156,7 @@ namespace CarRental.Business.Concrete
         //public async Task<IDataResult<Car>> GetByIdAsync(int carId)
         //{
         //    List<Expression<Func<Car, bool>>> predicates = new();
-        //    predicates.Add(x => x.Id == carId);
+        //    predicates.AddAsync(x => x.Id == carId);
         //    var car = await UnitOfWork.Cars.GetAsync(predicates);
         //    if (car == null)
         //    {

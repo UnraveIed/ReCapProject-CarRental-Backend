@@ -18,12 +18,14 @@ namespace CarRental.Business.Concrete
     public class AuthManager : IAuthService
     {
         private IUserService _userService;
+        private readonly IUserOperationClaimService _userOperationClaimService;
         private ITokenHelper _tokenHelper;
 
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+        public AuthManager(IUserService userService, ITokenHelper tokenHelper, IUserOperationClaimService userOperationClaimService)
         {
             _userService = userService;
             _tokenHelper = tokenHelper;
+            _userOperationClaimService = userOperationClaimService;
         }
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
@@ -49,7 +51,7 @@ namespace CarRental.Business.Concrete
 
         public async Task<IDataResult<User>> RegisterAsync(UserForRegisterDto userForRegisterDto)
         {
-            var result = BusinessRules.Run(await CheckUserExist(userForRegisterDto.Email));
+            var result = BusinessRules.Run(CheckUserExist(userForRegisterDto.Email).Result);
             if (result != null)
             {
                 return new ErrorDataResult<User>(result.Message);
@@ -65,6 +67,19 @@ namespace CarRental.Business.Concrete
                 PasswordSalt = passwordSalt
             };
             var addedUser = await _userService.AddAsync(user);
+
+            if (!addedUser.IsSuccess)
+                return new ErrorDataResult<User>(addedUser.Message ?? "Beklenmeyen Hata!");
+
+            var userOpUser = await _userOperationClaimService.AddAsync(new()
+            {
+                UserId = addedUser.Data.Id,
+                OperationClaimId = 2
+            });
+
+            if(userOpUser != null)
+                return new ErrorDataResult<User>(userOpUser.Message ?? "Beklenmeyen Hata!");
+            
             return new SuccessDataResult<User>(addedUser.Data);
         }
 

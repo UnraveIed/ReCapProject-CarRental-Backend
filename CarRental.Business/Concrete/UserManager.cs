@@ -167,7 +167,7 @@ namespace CarRental.Business.Concrete
         //public async Task<IDataResult<User>> GetByIdAsync(int userId)
         //{
         //    List<Expression<Func<User, bool>>> predicates = new();
-        //    predicates.Add(x => x.Id == userId);
+        //    predicates.AddAsync(x => x.Id == userId);
         //    var user = await UnitOfWork.Users.GetAsync(predicates);
         //    if (user == null)
         //    {

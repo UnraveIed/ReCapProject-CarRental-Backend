@@ -48,9 +48,9 @@ namespace CarRental.Business.Concrete
 
         public async Task<IDataResult<Brand>> GetById(int brandId)
         {
-            List<Expression<Func<Brand, bool>>> predi = new();
-            predi.Add(x => x.Id == brandId);
-            var brand = await _brandRepository.GetAsync(predi);
+            //List<Expression<Func<Brand, bool>>> predi = new();
+            //predi.AddAsync(x => x.Id == brandId);
+            var brand = await _brandRepository.GetAsync(x=>x.Id == brandId);
             if (brand == null)
             {
                 return new ErrorDataResult<Brand>("Verilen parametrede bir marka bulunamadı.");
@@ -92,7 +92,7 @@ namespace CarRental.Business.Concrete
         //public async Task<IDataResult<Brand>> GetById(int brandId)
         //{
         //    List<Expression<Func<Brand, bool>>> predi = new();
-        //    predi.Add(x => x.Id == brandId);
+        //    predi.AddAsync(x => x.Id == brandId);
         //    var brand = await UnitOfWork.Brands.GetAsync(predi);
         //    if (brand == null)
         //    {

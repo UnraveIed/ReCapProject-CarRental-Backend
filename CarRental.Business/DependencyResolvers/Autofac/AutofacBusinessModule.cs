@@ -48,6 +48,9 @@ namespace CarRental.Business.DependencyResolvers.Autofac
             builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
             builder.RegisterType<EfCarImageRepository>().As<ICarImageRepository>().SingleInstance();
 
+            builder.RegisterType<UserOperationClaimManager>().As<IUserOperationClaimService>().SingleInstance();
+            builder.RegisterType<EfUserOperationClaimRepository>().As<IUserOperationClaimRepository>().SingleInstance();
+
             builder.RegisterType<MailManager>().As<IMailService>().SingleInstance();
 
             builder.RegisterType<PaymentManager>().As<IPaymentService>().InstancePerRequest();

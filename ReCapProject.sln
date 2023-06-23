@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.Business", "CarRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.ConsoleUI", "CarRental.ConsoleUI\CarRental.ConsoleUI.csproj", "{2A881F9A-1600-48C3-BEAA-F43C99E14A66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.WebAPI", "CarRental.WebAPI\CarRental.WebAPI.csproj", "{D4A62CF3-D711-41F4-8D3F-7BFB495E07E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.WebAPI", "CarRental.WebAPI\CarRental.WebAPI.csproj", "{D4A62CF3-D711-41F4-8D3F-7BFB495E07E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
