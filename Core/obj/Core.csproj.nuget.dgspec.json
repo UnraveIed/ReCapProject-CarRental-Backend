@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\Core\\Core.csproj": {}
+    "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\Core\\Core.csproj": {
+    "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\np_ba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\Core\\obj\\",
+        "outputPath": "C:\\Users\\np_ba\\Source\\Repos\\ReCapProject-CarRental-Backend\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Studio\\Visual Studio 2022\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\np_ba\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -94,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

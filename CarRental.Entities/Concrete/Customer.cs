@@ -15,5 +15,6 @@ namespace CarRental.Entities.Concrete
         public virtual User? User { get; set; }
         public virtual ICollection<Rental>? Rentals { get; set; }
         public int FindexPoint { get; set; }
+        public virtual ICollection<Address>? Addresses { get; set; }
     }
 }

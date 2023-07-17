@@ -33,6 +33,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new OperationClaimMap());
             modelBuilder.ApplyConfiguration(new UserOperationClaimMap());
+            modelBuilder.ApplyConfiguration(new AddressMap());
             //modelBuilder.Entity<Customer>(c =>
             //{
             //    c.ToTable("Customers").HasKey(c => c.Id);
@@ -60,6 +61,8 @@ namespace CarRental.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
 
     }
 }

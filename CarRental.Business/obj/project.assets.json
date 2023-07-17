@@ -8153,19 +8153,19 @@
   },
   "packageFolders": {
     "C:\\Users\\np_ba\\.nuget\\packages\\": {},
-    "D:\\Visual Studio\\Visual Studio 2022\\Shared\\NuGetPackages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.Business\\CarRental.Business.csproj",
+      "projectUniqueName": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.Business\\CarRental.Business.csproj",
       "projectName": "CarRental.Business",
-      "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.Business\\CarRental.Business.csproj",
+      "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.Business\\CarRental.Business.csproj",
       "packagesPath": "C:\\Users\\np_ba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.Business\\obj\\",
+      "outputPath": "C:\\Users\\np_ba\\Source\\Repos\\ReCapProject-CarRental-Backend\\CarRental.Business\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Visual Studio\\Visual Studio 2022\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\np_ba\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8184,14 +8184,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.DataAccess\\CarRental.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.DataAccess\\CarRental.DataAccess.csproj"
+            "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.DataAccess\\CarRental.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.DataAccess\\CarRental.DataAccess.csproj"
             },
-            "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.Entities\\CarRental.Entities.csproj": {
-              "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.Entities\\CarRental.Entities.csproj"
+            "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.Entities\\CarRental.Entities.csproj": {
+              "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.Entities\\CarRental.Entities.csproj"
             },
-            "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\Core\\Core.csproj"
+            "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\Core\\Core.csproj"
             }
           }
         }
@@ -8239,7 +8239,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

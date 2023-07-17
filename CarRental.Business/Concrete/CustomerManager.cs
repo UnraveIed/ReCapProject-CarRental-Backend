@@ -8,6 +8,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,9 +57,9 @@ namespace CarRental.Business.Concrete
             return new ErrorDataResult<IList<Customer>>("Kayıtlı müşteri bulunmamaktadır.");
         }
 
-        public async Task<IDataResult<Customer>> GetByIdAsync(int customerId)
+        public async Task<IDataResult<Customer>> GetByIdAsync(int addressId)
         {
-            var customer = await _customerRepository.GetAsync(x => x.Id == customerId);
+            var customer = await _customerRepository.GetAsQueryable().Where(x=>x.Id == addressId).Include(x=>x.Addresses).FirstOrDefaultAsync();
             if (customer == null)
             {
                 return new ErrorDataResult<Customer>("Verilen parametrede bir müşteri bulunamadı.");

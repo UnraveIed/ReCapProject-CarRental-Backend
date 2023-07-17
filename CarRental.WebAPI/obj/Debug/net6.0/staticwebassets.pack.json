@@ -1,19 +1,19 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.WebAPI\\wwwroot\\desktop.ini",
+      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.WebAPI\\wwwroot\\desktop.ini",
       "PackagePath": "staticwebassets\\desktop.ini"
     },
     {
-      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.WebAPI\\wwwroot\\images\\carImages\\70081535_990_26_53_23_31_12_2022_.png",
+      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.WebAPI\\wwwroot\\images\\carImages\\70081535_990_26_53_23_31_12_2022_.png",
       "PackagePath": "staticwebassets\\images\\carImages\\70081535_990_26_53_23_31_12_2022_.png"
     },
     {
-      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.WebAPI\\wwwroot\\images\\carImages\\Default.png",
+      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.WebAPI\\wwwroot\\images\\carImages\\Default.png",
       "PackagePath": "staticwebassets\\images\\carImages\\Default.png"
     },
     {
-      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject\\CarRental.WebAPI\\wwwroot\\images\\carImages\\tssd_79_57_56_15_22_12_2022_.png",
+      "Id": "C:\\Users\\np_ba\\source\\repos\\ReCapProject-CarRental-Backend\\CarRental.WebAPI\\wwwroot\\images\\carImages\\tssd_79_57_56_15_22_12_2022_.png",
       "PackagePath": "staticwebassets\\images\\carImages\\tssd_79_57_56_15_22_12_2022_.png"
     },
     {
