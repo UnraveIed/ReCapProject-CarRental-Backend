@@ -18,7 +18,7 @@ namespace CarRental.WebAPI.Controllers
         }
 
         [HttpGet("getallbycustomer")]
-        public async Task<IActionResult> GetAllByCustomerId([FromRoute(Name = "customerId")] int customerId)
+        public async Task<IActionResult> GetAllByCustomerId([FromQuery] int customerId)
         {
             var addresses = await _addressService.GetAllByCustomerIdAsync(customerId);
             if(!addresses.IsSuccess)
@@ -27,7 +27,7 @@ namespace CarRental.WebAPI.Controllers
         }
 
         [HttpGet("getbyid")]
-        public async Task<IActionResult> GetById([FromRoute(Name = "addressId")] int addressId)
+        public async Task<IActionResult> GetById([FromQuery(Name = "addressId")] int addressId)
         {
             var address = await _addressService.GetById(addressId);
             if(!address.IsSuccess)
@@ -56,7 +56,7 @@ namespace CarRental.WebAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<IActionResult> DeleteAddress([FromRoute(Name = "addressId")] int addressId)
+        public async Task<IActionResult> DeleteAddress([FromQuery(Name = "addressId")] int addressId)
         {
             var result = await _addressService.HardDeleteAsync(addressId);
             if (!result.IsSuccess)

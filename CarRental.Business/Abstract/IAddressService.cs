@@ -14,7 +14,6 @@ namespace CarRental.Business.Abstract
         Task<IDataResult<IList<Address>>> GetAllByCustomerIdAsync(int customerId);
         Task<IDataResult<Address>> AddAsync(Address entity);
         Task<IDataResult<Address>> UpdateAsync(Address entity);
-        Task<IResult> HardDeleteAsync(Address entity);
         Task<IResult> HardDeleteAsync(int addressId);
         Task<IDataResult<Address>> GetById(int addressId);
     }

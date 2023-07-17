@@ -58,6 +58,9 @@ namespace CarRental.Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
+            builder.RegisterType<AddressManager>().As<IAddressService>().SingleInstance();
+            builder.RegisterType<EfAddressRepository>().As<IAddressRepository>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

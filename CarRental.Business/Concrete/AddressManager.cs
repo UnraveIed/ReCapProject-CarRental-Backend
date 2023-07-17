@@ -54,17 +54,6 @@ namespace CarRental.Business.Concrete
         }
 
         [CacheRemoveAspect("IAddressService.Get")]
-        public async Task<IResult> HardDeleteAsync(Address entity)
-        {
-            var result = BusinessRules.Run(await CheckEntityExistsById(entity.Id));
-            if (result != null)
-                return new ErrorDataResult<Address>(result.Message);
-
-            await _addressRepository.DeleteAsync(entity);
-            return new SuccessResult();
-        }
-
-        [CacheRemoveAspect("IAddressService.Get")]
         public async Task<IDataResult<Address>> UpdateAsync(Address entity)
         {
             var result = BusinessRules.Run(await CheckEntityExistsById(entity.Id));
@@ -100,6 +89,8 @@ namespace CarRental.Business.Concrete
             return new SuccessDataResult<IList<Address>>(addresses);
         }
 
+
+        [CacheRemoveAspect("IAddressService.Get")]
         public async Task<IResult> HardDeleteAsync(int addressId)
         {
             var result = BusinessRules.Run(await CheckEntityExistsById(addressId));
