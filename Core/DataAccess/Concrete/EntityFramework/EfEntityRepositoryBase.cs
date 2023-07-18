@@ -145,6 +145,24 @@ namespace Core.DataAccess.Concrete.EntityFramework
         //}
         //#endregion
 
+        public async Task AddRangeAsync(params TEntity[] entities)
+        {
+            using (var context = new TContext())
+            {
+                await context.AddRangeAsync(entities);
+                await context.SaveChangesAsync();
+            }
+        }
+
+        public async Task UpdateRangeAsync(params TEntity[] entities)
+        {
+            using (var context = new TContext())
+            {
+                context.UpdateRange(entities);
+                await context.SaveChangesAsync();
+            }
+        }
+
         public async Task<TEntity> AddAsync(TEntity entity)
         {
             using (var context = new TContext())

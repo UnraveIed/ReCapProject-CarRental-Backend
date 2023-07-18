@@ -45,6 +45,16 @@ namespace CarRental.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpPost("addaddresses")]
+        public async Task<IActionResult> AddAddresses([FromBody] Address[] addresses)
+        {
+            var result = await _addressService.AddRangeAsync(addresses);
+            if (!result.IsSuccess)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
         [HttpPut("update")]
         public async Task<IActionResult> UpdateAddress([FromBody] Address address)
         {

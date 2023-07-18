@@ -17,7 +17,9 @@ namespace Core.DataAccess.Abstract
         Task<T> GetAsync(IList<Expression<Func<T, bool>>> predicates, IList<Expression<Func<T, object>>> includes = null);
         Task<T> GetAsync(Expression<Func<T, bool>> predicate, IList<Expression<Func<T, object>>> includes = null);
         Task<T> AddAsync(T entity);
+        Task AddRangeAsync(params T[] entities);
         Task<T> UpdateAsync(T entity);
+        Task UpdateRangeAsync(params T[] entities);
         Task DeleteAsync(T entity);
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
         Task<int> CountAsync(Expression<Func<T, bool>> predicate = null);

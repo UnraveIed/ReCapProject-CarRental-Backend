@@ -101,5 +101,18 @@ namespace CarRental.Business.Concrete
             await _addressRepository.DeleteAsync(address);
             return new SuccessResult();
         }
+
+        public async Task<IResult> AddRangeAsync(params Address[] addresses)
+        {
+            foreach (var address in addresses)
+            {
+                var result = BusinessRules.Run(await CheckEntityTitleDuplicate(address.AddressTitle));
+                if (result != null)
+                    return new ErrorResult(result.Message);
+            }
+
+            await _addressRepository.AddRangeAsync(addresses);
+            return new SuccessResult();
+        }
     }
 }

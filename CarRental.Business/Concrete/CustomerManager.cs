@@ -4,12 +4,15 @@ using CarRental.DataAccess.Abstract;
 using CarRental.DataAccess.Concrete;
 using CarRental.Entities.Concrete;
 using Core.Aspects.Autofac.Validation;
+using Core.Entities.Concrete;
+using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,9 +60,14 @@ namespace CarRental.Business.Concrete
             return new ErrorDataResult<IList<Customer>>("Kayıtlı müşteri bulunmamaktadır.");
         }
 
-        public async Task<IDataResult<Customer>> GetByIdAsync(int addressId)
+        public async Task<IDataResult<Customer>> GetByIdWithAddressesAsync(int customerId)
         {
-            var customer = await _customerRepository.GetAsQueryable().Where(x=>x.Id == addressId).Include(x=>x.Addresses).FirstOrDefaultAsync();
+            var result = BusinessRules.Run(await CheckCustomerExistById(customerId));
+            if (result != null)
+                return new ErrorDataResult<Customer>(result.Message);
+            List<Expression<Func<Customer, object>>> includes = new();
+            includes.Add(x => x.Addresses);
+            var customer = await _customerRepository.GetAsync(x => x.Id == customerId, includes);
             if (customer == null)
             {
                 return new ErrorDataResult<Customer>("Verilen parametrede bir müşteri bulunamadı.");
@@ -75,6 +83,36 @@ namespace CarRental.Business.Concrete
                 return new ErrorDataResult<Customer>("Bir hata oluştu.");
             }
             return new SuccessDataResult<Customer>(updatedCustomer);
+        }
+
+        public async Task<IDataResult<Customer>> GetByUserIdWithAddressesAndUserAsync(int userId)
+        {
+            var result = BusinessRules.Run(await CheckCustomerExistByUserId(userId));
+            if (result != null)
+                return new ErrorDataResult<Customer>(result.Message);
+            List<Expression<Func<Customer, object>>> includes = new();
+            includes.Add(x => x.User);
+            includes.Add(x => x.Addresses);
+            var customer = await _customerRepository.GetAsync(x=>x.UserId == userId, includes);
+            return new SuccessDataResult<Customer>(customer);
+        }
+
+        private async Task<IResult> CheckCustomerExistByUserId(int userId)
+        {
+            var result = await _customerRepository.AnyAsync(x=>x.UserId == userId);
+            if (!result)
+                return new ErrorResult($"Verilen parametrede {userId} değer bulunamadı!");
+
+            return new SuccessResult();
+        }
+
+        private async Task<IResult> CheckCustomerExistById(int customerId)
+        {
+            var result = await _customerRepository.AnyAsync(x => x.Id == customerId);
+            if (!result)
+                return new ErrorResult($"Verilen parametrede {customerId} değer bulunamadı!");
+
+            return new SuccessResult();
         }
 
         #region UnitOfWork

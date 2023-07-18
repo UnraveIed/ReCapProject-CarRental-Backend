@@ -131,7 +131,7 @@ namespace CarRental.Business.Concrete
 
         private async Task<IResult> CheckFindexPoints(int carId, int customerId)
         {
-            var customer = await _customerService.GetByIdAsync(customerId);
+            var customer = await _customerService.GetByIdWithAddressesAsync(customerId);
             var car = await _carService.GetByIdAsync(carId);
             
             if(customer.Data.FindexPoint >= car.Data.MinFindexPoint)

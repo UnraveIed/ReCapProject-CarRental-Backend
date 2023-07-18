@@ -11,7 +11,8 @@ namespace CarRental.Business.Abstract
     public interface ICustomerService
     {
         Task<IDataResult<IList<Customer>>> GetAllAsync();
-        Task<IDataResult<Customer>> GetByIdAsync(int addressId);
+        Task<IDataResult<Customer>> GetByIdWithAddressesAsync(int customerId);
+        Task<IDataResult<Customer>> GetByUserIdWithAddressesAndUserAsync(int userId);
         Task<IDataResult<Customer>> AddAsync(Customer entity);
         Task<IDataResult<Customer>> UpdateAsync(Customer entity);
         Task<IResult> HardDeleteAsync(Customer entity);
